@@ -1,0 +1,14 @@
+﻿<Window x:Class="GunnersAuto.GUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GunnersAuto.GUI"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="552.8" Width="1491.2">
+    <Grid Margin="0,0,3.8,0.2">
+        <ComboBox x:Name="CbbxSalesPerson" HorizontalAlignment="Left" Height="54" Margin="10,10,0,0" VerticalAlignment="Top" Width="299" SelectionChanged="CbbxSalesPerson_SelectionChanged"/>
+        <DataGrid x:Name="DGSales1" HorizontalAlignment="Left" Height="200" Margin="337,10,0,0" VerticalAlignment="Top" Width="294"/>
+        <Button x:Name="btnMakeCar" Content="Opret Bil" HorizontalAlignment="Left" Height="76" Margin="1116,10,0,0" VerticalAlignment="Top" Width="355" FontSize="36" Click="btnMakeCar_Click"/>
+    </Grid>
+</Window>
