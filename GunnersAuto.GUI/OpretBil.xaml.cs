@@ -21,10 +21,22 @@ namespace GunnersAuto.GUI
     /// </summary>
     public partial class OpretBil : Window
     {
-        static string ConString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=GunnersCars.Db;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-        public OpretBil()
+        //static string ConString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=GunnersCars.Db;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        Dbhandler handler;
+
+        Car car;
+        public OpretBil(Dbhandler handler)
         {
             InitializeComponent();
+            this.handler = handler;
+        }
+
+        public Car Car
+        {
+            get
+            {
+                return car;
+            }
         }
 
         private void BtnCreate_Click(object sender, RoutedEventArgs e)
@@ -32,20 +44,22 @@ namespace GunnersAuto.GUI
             if (string.IsNullOrEmpty(tbxlabel.Text) && string.IsNullOrEmpty(tbxmodel.Text) && string.IsNullOrEmpty(tbxregristrationnumber.Text) && string.IsNullOrEmpty(tbxsteeringnumber.Text) && string.IsNullOrEmpty(tbxneworused.Text))
             {
                 MessageBox.Show("du mangler at udfylde et felt");
+                DialogResult = false;
             }
             else
             {
-                Dbhandler handler = new Dbhandler(ConString);
+                //Dbhandler handler = new Dbhandler(ConString);
 
-                Car p = new Car(tbxlabel.Text, tbxmodel.Text, tbxsteeringnumber.Text, tbxregristrationnumber.Text, tbxneworused.Text);
+                car = new Car(tbxlabel.Text, tbxmodel.Text, tbxsteeringnumber.Text, tbxregristrationnumber.Text, tbxneworused.Text);
 
-                handler.MakeCar(p);
+                //handler.MakeCar(p);
 
                 tbxlabel.Text = "";
                 tbxmodel.Text = "";
                 tbxsteeringnumber.Text = "";
                 tbxregristrationnumber.Text = "";
-                tbxneworused.Text = "";
+                tbxneworused.Text = "";                
+                DialogResult = true;
             }
         }
     }

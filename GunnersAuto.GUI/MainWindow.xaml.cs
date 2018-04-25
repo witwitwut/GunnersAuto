@@ -24,14 +24,17 @@ namespace GunnersAuto.GUI
     {
         static string ConString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=GunnersCars.Db;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
+        Dbhandler handler;
      
         public MainWindow()
         {
             InitializeComponent();
 
-            Dbhandler handler = new Dbhandler(ConString);            
+            handler = new Dbhandler(ConString);            
             handler.GetAllSales();
             CbbxSalesPerson.ItemsSource = handler.GetAllSalesPersons();
+            DGSales.ItemsSource = handler.GetAllCars();
+            lbxAllSales.ItemsSource = handler.GetAllSales();
         }
 
         private void CbbxSalesPerson_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -46,11 +49,29 @@ namespace GunnersAuto.GUI
 
         private void btnMakeCar_Click(object sender, RoutedEventArgs e)
         {
-            OpretBil newCar = new OpretBil();
+            OpretBil newCar = new OpretBil(handler);
 
             if (newCar.ShowDialog() == true)
             {
+                MessageBox.Show(newCar.ToString());
+                handler.MakeCar(newCar.Car);
+                DGSales.ItemsSource = handler.GetAllCars();
+            }
 
+        }
+
+        private void btnsale_Click(object sender, RoutedEventArgs e)
+        {
+            if (DGSales.SelectedItem == null && CbbxSalesPerson.SelectedItem == null && string.IsNullOrWhiteSpace(tbxTypeofTransaction.Text) && string.IsNullOrWhiteSpace(tbxPrice.Text))
+            {
+                MessageBox.Show("Du mangler at udfylde et felt");
+            }
+            else
+            {
+                handler.MakeSale((Car)DGSales.SelectedItem, (SalesPerson)CbbxSalesPerson.SelectedItem, tbxTypeofTransaction.Text, int.Parse(tbxPrice.Text));
+                tbxTypeofTransaction.Text = "";
+                tbxPrice.Text = "";
+                lbxAllSales.ItemsSource = handler.GetAllSales();
             }
         }
     }

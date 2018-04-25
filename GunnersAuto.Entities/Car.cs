@@ -112,5 +112,9 @@ namespace GunnersAuto.Entities
                 label = value;
             }
         }
+        public override string ToString()
+        {
+            return $"Mærke: {label}  Model: {Model}  Styringsnummer: {steeringNumber}  Regristraringsnummer:  {RegristrationNumber}   {NewOrUsed}";
+        }
     }
 }

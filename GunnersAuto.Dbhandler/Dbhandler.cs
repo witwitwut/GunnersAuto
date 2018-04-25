@@ -87,7 +87,7 @@ namespace GunnersAuto.DataAccess
 
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
-                        sales.Add(new Sales(row.Field<int>("CarID"), row.Field<int>("salesPersonsID"), row.Field<string>("typeoftransaktion"), row.Field<int>("price")));
+                        sales.Add(new Sales(row.Field<int>("CarID"), row.Field<int>("salesPersonID"), row.Field<string>("TypeOfTransaction"), row.Field<int>("Price")));
                     }
                 }
                 List<Car> cars = GetAllCars();

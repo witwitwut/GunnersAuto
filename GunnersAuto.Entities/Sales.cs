@@ -82,7 +82,7 @@ namespace GunnersAuto.Entities
         }
         public override string ToString()
         {
-            return $"Bilen: {car} er {TypeofTransaktion} af {salesPerson} for {price}";
+            return $"Bilen: {car} er {TypeofTransaktion} af {salesPerson} for {price} kr.";
         }
     }
 }

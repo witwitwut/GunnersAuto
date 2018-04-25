@@ -5,10 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GunnersAuto.GUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="552.8" Width="1491.2">
-    <Grid Margin="0,0,3.8,0.2">
+        Title="MainWindow" Height="666.8" Width="1491.2">
+    <Grid Margin="0,0,3.8,-19.4">
         <ComboBox x:Name="CbbxSalesPerson" HorizontalAlignment="Left" Height="54" Margin="10,10,0,0" VerticalAlignment="Top" Width="299" SelectionChanged="CbbxSalesPerson_SelectionChanged"/>
-        <DataGrid x:Name="DGSales1" HorizontalAlignment="Left" Height="200" Margin="337,10,0,0" VerticalAlignment="Top" Width="294"/>
-        <Button x:Name="btnMakeCar" Content="Opret Bil" HorizontalAlignment="Left" Height="76" Margin="1116,10,0,0" VerticalAlignment="Top" Width="355" FontSize="36" Click="btnMakeCar_Click"/>
+        <DataGrid x:Name="DGSales" HorizontalAlignment="Left" Height="200" Margin="15,84,0,0" VerticalAlignment="Top" Width="294"/>
+        <Button x:Name="btnMakeCar" Content="Opret Bil" HorizontalAlignment="Left" Height="76" Margin="1116,437,0,0" VerticalAlignment="Top" Width="355" FontSize="36" Click="btnMakeCar_Click"/>
+        <TextBox x:Name="tbxTypeofTransaction" HorizontalAlignment="Left" Height="45" Margin="269,365,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211"/>
+        <TextBox x:Name="tbxPrice" HorizontalAlignment="Left" Height="45" Margin="47,365,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="168"/>
+        <Label Content="køb eller salg" HorizontalAlignment="Left" Height="39" Margin="269,321,0,0" VerticalAlignment="Top" Width="211"/>
+        <Label Content="Pris" HorizontalAlignment="Left" Height="39" Margin="47,321,0,0" VerticalAlignment="Top" Width="66"/>
+        <Button x:Name="btnsale" Content="Opret salg" HorizontalAlignment="Left" Height="119" Margin="47,415,0,0" VerticalAlignment="Top" Width="433" FontSize="36" Click="btnsale_Click"/>
+        <ListBox x:Name="lbxAllSales" HorizontalAlignment="Left" Height="274" Margin="314,10,0,0" VerticalAlignment="Top" Width="237"/>
     </Grid>
 </Window>
